@@ -1,1 +1,7 @@
-echo "__pycache__/" >> .gitignore
+# 清除旧规则（如果有）
+sed -i '/__pycache__/d' .gitignore
+
+# 添加新规则（支持所有嵌套情况）
+echo "​**​/__pycache__/" >> .gitignore
+echo "*.py[cod]" >> .gitignore       # 同时忽略 .pyc/.pyo/.pyd 文件
+echo ".mypy_cache/" >> .gitignore    # 可选：忽略 mypy 缓存
