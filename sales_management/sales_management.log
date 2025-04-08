@@ -26,3 +26,53 @@
 2025-04-08 18:13:40,433 - services.sales_service - INFO - 创建销售记录 - 门店:2 商品:TEST001
 2025-04-08 18:13:40,442 - services.sales_service - INFO - 销售记录创建成功: SALE-20250408-9BDE980A
 2025-04-08 18:13:40,443 - services.sales_service - INFO - 生成销售报表
+2025-04-08 19:22:32,453 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:22:32,455 - utils.logger - ERROR - 初始化失败: module 'api.routes.products' has no attribute 'bp'
+2025-04-08 19:22:58,628 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:22:58,630 - utils.logger - ERROR - 初始化失败: 'function' object has no attribute 'info'
+2025-04-08 19:23:24,916 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:23:24,919 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:23:25,633 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:23:25,636 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:23:36,192 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:23:36,405 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:23:42,239 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:23:42,467 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:27:13,274 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:27:13,277 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:27:16,188 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:27:16,192 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:27:28,405 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:27:29,271 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:27:53,313 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:27:53,316 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:27:53,685 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:27:53,688 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:27:59,680 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:30:12,761 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:30:37,918 - utils.logger - INFO - 应用程序启动
+2025-04-08 19:30:37,920 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:30:37,921 - services.customer_service - INFO - 尝试注册会员: 王小明(13800138000)
+2025-04-08 19:30:37,927 - services.customer_service - ERROR - 会员注册失败: 会员已存在或联系电话重复
+2025-04-08 19:30:37,934 - utils.logger - INFO - 成功添加门店: 测试门店, ID: 3
+2025-04-08 19:30:37,938 - utils.logger - ERROR - 添加商品失败: UNIQUE constraint failed: Product.条码
+2025-04-08 19:37:11,485 - utils.logger - INFO - 应用程序启动
+2025-04-08 19:37:11,487 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:37:11,488 - services.customer_service - INFO - 尝试注册会员: 王小明(13800138000)
+2025-04-08 19:37:11,489 - services.customer_service - ERROR - 会员注册失败: 会员已存在或联系电话重复
+2025-04-08 19:37:11,500 - utils.logger - INFO - 成功添加门店: 测试门店, ID: 4
+2025-04-08 19:37:11,503 - utils.logger - ERROR - 添加商品失败: UNIQUE constraint failed: Product.条码
+2025-04-08 19:50:24,085 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:50:24,088 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:50:24,562 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:50:24,565 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:50:29,162 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:52:35,390 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-08 19:53:23,432 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:53:23,435 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:53:45,626 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:53:45,629 - utils.logger - ERROR - 初始化失败: URL rule './' must start with a slash.
+2025-04-08 19:54:06,548 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:54:06,551 - utils.logger - INFO - Flask应用初始化完成
+2025-04-08 19:54:06,953 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 19:54:06,957 - utils.logger - INFO - Flask应用初始化完成
