@@ -1,0 +1,28 @@
+2025-04-08 17:32:38,298 - utils.logger - INFO - 应用程序启动
+2025-04-08 17:32:38,301 - utils.logger - ERROR - 数据库初始化失败: near "AUTO_INCREMENT": syntax error
+2025-04-08 17:36:46,591 - utils.logger - INFO - 应用程序启动
+2025-04-08 17:36:46,593 - utils.logger - ERROR - 数据库初始化失败: near "AUTO_INCREMENT": syntax error
+2025-04-08 17:37:48,923 - utils.logger - INFO - 应用程序启动
+2025-04-08 17:37:48,966 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 17:45:12,295 - utils.logger - INFO - 应用程序启动
+2025-04-08 17:45:12,356 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 18:06:11,707 - utils.logger - INFO - 应用程序启动
+2025-04-08 18:06:11,709 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 18:06:11,715 - utils.logger - INFO - 成功添加门店: 旗舰店, ID: 1
+2025-04-08 18:06:11,718 - utils.logger - INFO - 查询门店信息: 1
+2025-04-08 18:06:11,724 - utils.logger - INFO - 成功添加商品: 矿泉水, 条码: 690123456789
+2025-04-08 18:06:11,739 - utils.logger - INFO - 成功添加图书: Python编程, 条码: 978710100
+2025-04-08 18:06:11,749 - utils.logger - INFO - 成功添加供货商: 北京供货商, ID: 1
+2025-04-08 18:06:11,757 - utils.logger - INFO - 成功关联商品690123456789与供货商1
+2025-04-08 18:13:40,400 - utils.logger - INFO - 应用程序启动
+2025-04-08 18:13:40,401 - utils.logger - INFO - 数据库初始化完成
+2025-04-08 18:13:40,402 - services.customer_service - INFO - 尝试注册会员: 王小明(13800138000)
+2025-04-08 18:13:40,409 - services.customer_service - INFO - 会员注册成功，ID: 1
+2025-04-08 18:13:40,411 - services.customer_service - INFO - 查询会员信息: 1
+2025-04-08 18:13:40,415 - utils.logger - INFO - 成功添加门店: 测试门店, ID: 2
+2025-04-08 18:13:40,423 - utils.logger - INFO - 成功添加商品: 测试商品, 条码: TEST001
+2025-04-08 18:13:40,423 - services.sales_service - INFO - 创建销售记录 - 门店:2 商品:TEST001
+2025-04-08 18:13:40,433 - services.sales_service - INFO - 销售记录创建成功: SALE-20250408-C5FCAD11
+2025-04-08 18:13:40,433 - services.sales_service - INFO - 创建销售记录 - 门店:2 商品:TEST001
+2025-04-08 18:13:40,442 - services.sales_service - INFO - 销售记录创建成功: SALE-20250408-9BDE980A
+2025-04-08 18:13:40,443 - services.sales_service - INFO - 生成销售报表

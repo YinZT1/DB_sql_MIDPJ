@@ -1,0 +1,24 @@
+sales_management/
+├── database/
+│   ├── __init__.py
+│   ├── db_connector.py      # 数据库连接管理
+│   ├── models.py            # 数据模型定义
+│   ├── schema.sql           # 数据库表结构SQL
+│   └── queries.py           # 常用查询封装
+├── services/
+│   ├── __init__.py
+│   ├── store_service.py     # 门店相关业务逻辑
+│   ├── product_service.py   # 商品管理
+│   ├── customer_service.py  # 客户管理
+│   └── sales_service.py     # 销售记录处理
+├── utils/
+│   ├── __init__.py
+│   ├── logger.py            # 日志配置
+│   └── data_utils.py        # 数据辅助函数
+├── tests/                   # 测试目录
+│   ├── __init__.py
+│   ├── test_models.py
+│   └── test_services.py
+├── config.py                # 项目配置
+├── main.py                  # 主程序入口
+└── requirements.txt         # 依赖列表
