@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask import Response,json
 from sales_management.database.db_connector import get_db_connection
 from sales_management.services.store_service import StoreService
 from utils.logger import setup_logger
@@ -14,8 +15,14 @@ def get_stores():
         with get_db_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM Store")
-            stores = cursor.fetchall()
-        return jsonify([dict(store) for store in stores])
+            stores = [dict(store) for store in cursor.fetchall()]
+        
+        # 手动处理 JSON 响应，确保中文不转码
+        return Response(
+            json.dumps(stores, ensure_ascii=False),  # 关键参数
+            mimetype='application/json; charset=utf-8'  # 明确指定编码
+        )
+    
     except Exception as e:
         logger.error(f"获取门店列表失败: {e}")
         return jsonify({'error': str(e)}), 500

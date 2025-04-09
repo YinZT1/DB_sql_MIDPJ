@@ -76,3 +76,18 @@
 2025-04-08 19:54:06,551 - utils.logger - INFO - Flask应用初始化完成
 2025-04-08 19:54:06,953 - utils.logger - INFO - 数据库初始化完成
 2025-04-08 19:54:06,957 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:14:53,634 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:14:53,638 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:14:54,223 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:14:54,225 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:14:58,204 - utils.logger - WARNING - 404错误: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-04-09 10:18:58,303 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:18:58,306 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:20:12,699 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:20:12,702 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:20:15,641 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:20:15,644 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:23:25,879 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:23:25,882 - utils.logger - INFO - Flask应用初始化完成
+2025-04-09 10:23:26,303 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 10:23:26,306 - utils.logger - INFO - Flask应用初始化完成
