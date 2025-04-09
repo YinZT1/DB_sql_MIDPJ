@@ -26,3 +26,9 @@
 2025-04-08 18:13:40,433 - services.sales_service - INFO - 创建销售记录 - 门店:2 商品:TEST001
 2025-04-08 18:13:40,442 - services.sales_service - INFO - 销售记录创建成功: SALE-20250408-9BDE980A
 2025-04-08 18:13:40,443 - services.sales_service - INFO - 生成销售报表
+2025-04-09 12:27:08,310 - utils.logger - INFO - 应用程序启动
+2025-04-09 12:27:19,691 - utils.logger - INFO - 数据库初始化完成
+2025-04-09 12:27:43,448 - services.customer_service - INFO - 尝试注册会员: 王小明(13800138000)
+2025-04-09 12:27:57,496 - services.customer_service - ERROR - 会员注册失败: 会员已存在或联系电话重复
+2025-04-09 12:28:14,283 - utils.logger - INFO - 成功添加门店: 测试门店, ID: 3
+2025-04-09 12:28:18,282 - utils.logger - ERROR - 添加商品-日用品失败: UNIQUE constraint failed: Product.条码
