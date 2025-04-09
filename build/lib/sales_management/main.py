@@ -72,16 +72,8 @@ def main():
         print("按类别统计:")
         for item in report['按类别统计']:
             print(f"{item['类别']}: {item['销售额']}元")
-            
     except Exception as e:
         print(f"销售操作出错: {e}")
-        
-    try:
-        
-        store_service.delete_store(store_id)
-        print(f"门店删除成功: {store_id}")
-    except Exception as e:
-        print(f"门店删除出错: {e}")
 
 if __name__ == "__main__":
     main()

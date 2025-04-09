@@ -1,3 +1,4 @@
+README.md
 setup.py
 sales_management/__init__.py
 sales_management/config.py
@@ -10,11 +11,11 @@ sales_management/database/__init__.py
 sales_management/database/db_connector.py
 sales_management/database/models.py
 sales_management/database/queries.py
-sales_management/service/__init__.py
-sales_management/service/customer_service.py
-sales_management/service/product_service.py
-sales_management/service/sales_service.py
-sales_management/service/store_service.py
+sales_management/services/__init__.py
+sales_management/services/customer_service.py
+sales_management/services/product_service.py
+sales_management/services/sales_service.py
+sales_management/services/store_service.py
 sales_management/utils/__init__.py
 sales_management/utils/data_utils.py
 sales_management/utils/logger.py
