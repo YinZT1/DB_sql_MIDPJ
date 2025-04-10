@@ -25,7 +25,6 @@ def main():
     sales_service = SalesService()
     
     # 测试客户注册
-    # 仅用手机号注册为非会员用户
     try:
         # 情况1: 仅用手机号注册为非会员用户
         phone1 = "13700051116"
