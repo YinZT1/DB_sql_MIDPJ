@@ -278,47 +278,226 @@ class Supplier:
             )
             conn.commit()
             return True
+
+class Customer:
+    """客户模型"""
+    @staticmethod
+    def create(联系电话, 类型="非会员"):
+        """
+        创建客户记录
+        :param 联系电话：客户联系电话
+        :param 类型："会员" 或 "非会员"
+        :return 联系电话
+        """
+        if not 联系电话:
+            raise ValueError("联系电话不能为空")
+        if 类型 not in ('会员', '非会员'):
+            raise ValueError("类型必须是'会员'或'非会员'")
         
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            try:
+                cursor.execute(
+                    "INSERT INTO Customer (联系电话, 类型) VALUES (?, ?)",
+                    (联系电话, 类型)
+                )
+                conn.commit()
+                return 联系电话
+            except sqlite3.IntegrityError:
+                raise ValueError("该联系电话已存在")
+            
+    @staticmethod
+    def get_by_phone(联系电话):
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT * FROM Customer WHERE 联系电话=?",
+                (联系电话,)
+            )
+            return cursor.fetchone()
+        
+    @staticmethod
+    def update(联系电话, 新联系电话=None, 类型=None):
+        """
+        更新客户信息
+        :param 联系电话：原联系电话
+        :param 新联系电话：新联系电话（可选）
+        :param 类型：新类型（可选）
+        :return 影响的行数
+        """
+        updates = []
+        params = []
+
+        if 新联系电话:
+            if not 新联系电话.strip():
+                raise ValueError("新联系电话不能为空")
+            updates.append("联系电话=?")
+            params.append(新联系电话)
+        if 类型:
+            if 类型 not in ('会员', '非会员'):
+                raise ValueError("类型必须是'会员'或'非会员'")
+            updates.append("类型=?")
+            params.append(类型)
+
+        if not updates:
+            return 0
+        
+        params.append(联系电话)
+
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            try:
+                cursor.execute(
+                    f'UPDATE Customer SET {",".join(updates)} WHERE 联系电话=?',
+                    params 
+                )
+                conn.commit()
+                return cursor.rowcount
+            except sqlite3.IntegrityError:
+                raise ValueError("联系电话已存在")
+            
+    @staticmethod
+    def delete(联系电话):
+        """删除客户记录"""
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "DELETE FROM Customer WHERE 联系电话=?",
+                (联系电话,)
+            )
+            conn.commit()
+            return cursor.rowcount
+        
+    @staticmethod
+    def get_all():
+        """获取所有客户"""
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM Customer")
+            return cursor.fetchall()
 
 class Member:
     """会员模型"""
     @staticmethod
     def create(姓名, 联系电话, email=None, 地址=None):
-        # 先创建客户记录
+        """
+        创建会员记录
+        :param 姓名：会员姓名
+        :param 联系电话：必须在Customer表中存在且类型为'会员'
+        """
+        if not 姓名 or not 联系电话:
+            raise ValueError("姓名和联系电话不能为空")
+        if email and '@' not in email:
+            raise ValueError("邮箱格式不正确")
+        
         with get_db_connection() as conn:
             cursor = conn.cursor()
+            # 检查是否已存在该电话的客户
+            cursor.execute(
+                "SELECT 类型 FROM Customer WHERE 联系电话=?", 
+                (联系电话,)
+                )
+            customer = cursor.fetchone()
+            
+            if not customer:
+                raise ValueError("客户不存在，请先创建客户记录")
+            if customer['类型'] != '会员':
+                raise ValueError("客户类型不是会员")
+            
             try:
-                # 检查是否已存在该电话的客户
-                cursor.execute("SELECT 1 FROM Customer WHERE 联系电话=?", (联系电话,))
-                if not cursor.fetchone():
-                    cursor.execute(
-                        "INSERT INTO Customer (联系电话, 类型) VALUES (?, ?)",
-                        (联系电话, '会员')
-                    )
-                
-                # 创建会员记录
                 cursor.execute(
-                    """INSERT INTO Member (姓名, 联系电话, email, 地址)
-                    VALUES (?, ?, ?, ?)""",
+                    "INSERT INTO Member (姓名, 联系电话, email, 地址) VALUES (?, ?, ?, ?)",
                     (姓名, 联系电话, email, 地址)
                 )
                 conn.commit()
                 return cursor.lastrowid
-            except sqlite3.IntegrityError as e:
-                conn.rollback()
-                raise ValueError("会员已存在或联系电话重复")
+            except sqlite3.IntegrityError:
+                raise ValueError("联系电话已注册为会员")
 
     @staticmethod
     def get_by_id(编号):
+        """根据ID获取会员信息"""
         with get_db_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute("""
-                SELECT m.编号, m.姓名, m.联系电话, m.email, m.地址, c.类型
-                FROM Member m
-                JOIN Customer c ON m.联系电话 = c.联系电话
-                WHERE m.编号=?
-            """, (编号,))
+            cursor.execute(
+                "SELECT * FROM Member WHERE 编号=?",
+                (编号,)
+            )
             return cursor.fetchone()
+        
+    @staticmethod
+    def get_by_phone(联系电话):
+        """根据电话获取会员信息"""
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT * FROM Member WHERE 联系电话=?",
+                (联系电话,)
+            )
+            return cursor.fetchone()
+        
+    @staticmethod
+    def update(编号, 姓名=None, email=None, 地址=None):
+        """
+        更新会员信息
+        :param 编号：会员编号
+        :param 姓名：新姓名（可选）
+        :param email：新邮箱（可选）
+        :param 地址：新地址（可选）
+        :return 影响的行数
+        """
+        updates = []
+        params = []
+
+        if 姓名:
+            if not 姓名.strip():
+                raise ValueError("姓名不能为空")
+            updates.append("姓名=?")
+            params.append(姓名)
+
+        if email:
+            if '@' not in email:
+                raise ValueError("邮箱格式不正确")
+            updates.append("email=?")
+            params.append(email)
+            
+        if 地址:
+            updates.append("地址=?")
+            params.append(地址)
+            
+        if not updates:
+            return 0
+            
+        params.append(编号)
+
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                f"UPDATE Member SET {','.join(updates)} WHERE 编号=?",
+                params
+            )
+            conn.commit()
+            return cursor.rowcount
+        
+    @staticmethod
+    def delete(编号):
+        """删除会员记录(不删除客户记录)"""
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                "DELETE FROM Member WHERE 编号=?",
+                (编号,)
+            )
+            conn.commit()
+            return cursor.rowcount
+
+    @staticmethod
+    def get_all():
+        """获取所有会员"""
+        with get_db_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM Member")
+            return cursor.fetchall()
 
 class Sale:
     """销售记录模型"""
