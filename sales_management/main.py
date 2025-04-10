@@ -21,21 +21,55 @@ def main():
     store_service = StoreService()
     product_service = ProductService()
     customer_service = CustomerService()
+    member_service = MemberService()
     sales_service = SalesService()
     
-    # 测试会员注册
+    # 测试客户注册
     try:
-        member_id = customer_service.register_member(
-            姓名="王小明",
-            联系电话="13800138000",
-            email="wang@example.com"
-        )
-        print(f"会员注册成功，ID: {member_id}")
+        # 情况1: 仅用手机号注册为非会员用户
+        phone1 = "13700051116"
+        customer_service.register_customer(phone1)
+        print(f"非会员客户注册成功: {phone1}")
         
-        member_info = customer_service.get_member_info(member_id)
-        print(f"会员信息: {member_info}")
+        # 情况2: 直接注册为会员用户
+        phone2 = "13700051117"
+        customer_service.register_customer(phone2, 类型='会员')
+        # 然后创建会员记录
+        member_id = customer_service.upgrade_to_member(
+            姓名="刘会员",
+            联系电话=phone2,
+            email="liu@example.com"
+        )
+        print(f"直接注册为会员成功: {phone2}, 会员ID: {member_id}")
+        
     except Exception as e:
-        print(f"会员操作出错: {e}")
+        print(f"客户注册出错: {e}")
+
+    # 测试非会员用户升级为会员
+    try:
+        non_member_phone = "13700051116"
+        
+        customer_info = customer_service.get_customer_info(non_member_phone)
+        print(f"\n升级前客户状态 - 电话: {non_member_phone}, 类型: {customer_info['类型']}")
+        
+        if customer_info['类型'] == '非会员':
+            member_id = customer_service.upgrade_to_member(
+                姓名="魏会员",
+                联系电话=non_member_phone,
+                email="wei@example.com",
+                地址="上海市"
+            )
+            print(f"非会员升级为会员成功，ID: {member_id}")
+            
+            # 验证升级后的状态
+            updated_info = customer_service.get_customer_info(non_member_phone)
+            print(f"升级后客户状态 - 类型: {updated_info['类型']}")
+            print(f"会员详细信息: {member_service.get_member_info(member_id)}")
+        else:
+            print("该客户已经是会员，无需升级")
+            
+    except Exception as e:
+        print(f"会员升级出错: {e}")
     
     # 测试销售记录
     try:
