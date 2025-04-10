@@ -1,1 +1,17 @@
-echo "__pycache__/" >> .gitignore
+# 常见的忽略文件
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
+node_modules/
+venv/
+.env
+
+sales_management/sales.db
+sales_management/database/__pycache__
+sales_management/services/__pycache__
+sales_management/utils/__pycache__
+sales_management/__pycache__
+
+sales_management/tests/
